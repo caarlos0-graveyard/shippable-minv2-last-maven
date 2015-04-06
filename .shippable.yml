@@ -4,7 +4,7 @@ env:
 before_install:
   - apt-get update
   - apt-get install -y docker.io
-  - service docker start
+  - service docker.io start
 install:
   - docker info
   - docker build -t caarlos0/shipable-minv2-last-maven .
