@@ -4,12 +4,12 @@ env:
 before_install:
   - apt-get update
   - apt-get install -y docker.io
-  - service docker.io start
+  - sudo service docker.io restart
 install:
-  - docker info
-  - docker build -t caarlos0/shipable-minv2-last-maven .
+  - sudo docker info
+  - sudo docker build -t caarlos0/shipable-minv2-last-maven .
 script:
-  - docker run caarlos0/shipable-minv2-last-maven mvn -version
+  - sudo docker run caarlos0/shipable-minv2-last-maven mvn -version
 after_success:
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-  - docker push caarlos0/shipable-minv2-last-maven
+  - sudo docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+  - sudo docker push caarlos0/shipable-minv2-last-maven
